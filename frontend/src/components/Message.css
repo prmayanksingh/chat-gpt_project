@@ -1,0 +1,131 @@
+/* ============ MESSAGES ============ */
+
+.message {
+  display: flex;
+  gap: 0.75rem;
+  animation: messageIn 0.3s ease-out;
+  align-items: flex-end;
+}
+
+.message.user {
+  justify-content: flex-end;
+}
+
+.message.assistant {
+  justify-content: flex-start;
+}
+
+.message-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+.message.user .message-avatar {
+  background-color: var(--accent-color);
+  color: var(--bg-primary);
+  order: 2;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.message.assistant .message-avatar {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  order: 1;
+}
+
+.app.dark .message.assistant .message-avatar {
+  background-color: var(--bg-tertiary);
+}
+
+.message-content {
+  max-width: 60%;
+  background-color: var(--bg-secondary);
+  border-radius: 16px;
+  padding: 0.875rem 1.125rem;
+  line-height: 1.6;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.message.user .message-content {
+  background-color: var(--accent-color);
+  color: var(--bg-primary);
+  border-bottom-right-radius: 6px;
+  order: 1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.message.assistant .message-content {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border-bottom-left-radius: 6px;
+  order: 2;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.app.dark .message.assistant .message-content {
+  background-color: var(--bg-tertiary);
+}
+
+.message-content p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* ============ ANIMATIONS ============ */
+
+@keyframes messageIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============ RESPONSIVE STYLES ============ */
+
+@media (max-width: 768px) {
+  .message {
+    gap: 0.5rem;
+  }
+
+  .message-avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 0.7rem;
+  }
+
+  .message-content {
+    max-width: 70%;
+    padding: 0.6rem 0.85rem;
+  }
+
+  .message-content p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .message-content {
+    max-width: 85%;
+    padding: 0.6rem 0.75rem;
+    border-radius: 12px;
+  }
+
+  .message.user .message-content {
+    border-bottom-right-radius: 4px;
+  }
+
+  .message.assistant .message-content {
+    border-bottom-left-radius: 4px;
+  }
+}

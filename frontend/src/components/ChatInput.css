@@ -1,0 +1,139 @@
+/* ============ INPUT AREA ============ */
+
+.chat-input-area {
+  padding: 1.5rem 1.5rem 1.75rem 1.5rem;
+  background-color: var(--bg-primary);
+}
+
+.app.dark .chat-input-area {
+  background-color: var(--bg-primary);
+}
+
+.input-wrapper {
+  display: flex;
+  gap: 0.75rem;
+  background-color: var(--bg-secondary);
+  border: 1.5px solid var(--border-color);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.input-wrapper:focus-within {
+  border-color: var(--accent-color);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  background-color: var(--bg-primary);
+}
+
+.app.dark .input-wrapper:focus-within {
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.1);
+}
+
+.chat-input-area input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  padding: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.chat-input-area input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.chat-input-area input::placeholder {
+  color: var(--text-secondary);
+}
+
+.send-btn {
+  background-color: var(--accent-color);
+  color: var(--bg-primary);
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.send-btn:hover:not(:disabled) {
+  background-color: var(--accent-hover);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  transform: translateY(-2px);
+}
+
+.send-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.send-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.input-footer {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-top: 0.75rem;
+  letter-spacing: 0.3px;
+}
+
+/* ============ RESPONSIVE STYLES ============ */
+
+@media (max-width: 768px) {
+  .chat-input-area {
+    padding: 1rem;
+  }
+
+  .input-wrapper {
+    padding: 0.5rem;
+  }
+
+  .chat-input-area input {
+    padding: 0.4rem;
+    font-size: 0.9rem;
+  }
+
+  .send-btn {
+    padding: 0.5rem 0.7rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .chat-input-area {
+    padding: 0.75rem;
+  }
+
+  .input-wrapper {
+    padding: 0.4rem;
+    gap: 0.5rem;
+  }
+
+  .chat-input-area input {
+    padding: 0.4rem;
+    font-size: 0.9rem;
+  }
+
+  .send-btn {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.95rem;
+  }
+
+  .input-footer {
+    font-size: 0.65rem;
+    margin-top: 0.5rem;
+  }
+}

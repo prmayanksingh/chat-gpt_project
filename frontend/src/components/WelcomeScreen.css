@@ -1,0 +1,92 @@
+/* ============ WELCOME SCREEN ============ */
+
+.chat-welcome {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 2rem 1rem;
+}
+
+.welcome-content {
+  text-align: center;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.welcome-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  margin: 0;
+  opacity: 0.7;
+}
+
+.welcome-title {
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+  position: relative;
+  background: linear-gradient(135deg, #4a9eff 0%, #a78bfa 50%, #ff6b9d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 20px rgba(74, 158, 255, 0.3));
+}
+
+.app.dark .welcome-title {
+  filter: drop-shadow(0 0 20px rgba(148, 163, 255, 0.4));
+}
+
+.welcome-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.8;
+  letter-spacing: 0.4px;
+}
+
+/* ============ RESPONSIVE STYLES ============ */
+
+@media (max-width: 768px) {
+  .chat-welcome {
+    padding: 1rem;
+  }
+
+  .welcome-label {
+    font-size: 0.7rem;
+  }
+
+  .welcome-title {
+    font-size: 2.5rem;
+  }
+
+  .welcome-subtitle {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .chat-welcome {
+    padding: 0.75rem;
+  }
+
+  .welcome-label {
+    font-size: 0.65rem;
+  }
+
+  .welcome-title {
+    font-size: 1.8rem;
+  }
+
+  .welcome-subtitle {
+    font-size: 0.85rem;
+  }
+}

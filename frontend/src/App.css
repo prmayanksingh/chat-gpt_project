@@ -1,0 +1,4 @@
+/* ============ MODULAR CSS IMPORTS ============ */
+@import url('./styles/Global.css');
+@import url('./styles/Auth.css');
+@import url('./styles/Home.css');
