@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   createChat,
@@ -6,13 +6,15 @@ import {
   addMessages,
   deleteChat,
   updateChatTitle,
+  fetchChats
 } from "../redux/chatSlice";
-import ChatSidebar from "./ChatSidebar";
-import ChatHeader from "./ChatHeader";
-import ChatContent from "./ChatContent";
-import ChatInput from "./ChatInput";
-import NewChatModal from "./NewChatModal";
+import ChatSidebar from "../components/ChatSidebar";
+import ChatHeader from "../components/ChatHeader";
+import ChatContent from "../components/ChatContent";
+import ChatInput from "../components/ChatInput";
+import NewChatModal from "../components/NewChatModal";
 import "../styles/Home.css";
+import axios from "axios";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -47,12 +49,20 @@ const Home = () => {
   };
 
   // Handle new chat confirmation from modal
-  const handleNewChatConfirm = (chatName) => {
-    const newChatId = generateId();
+  const handleNewChatConfirm = async (chatTitle) => {
+
+    const chat ={
+      title: chatTitle
+    }
+    const response = await axios.post("http://localhost:3000/api/chat", chat,{
+      withCredentials:true
+    })
+    
+    console.log(response)
+    
     const newChat = {
-      id: newChatId,
-      title: chatName,
-      date: getDateString(),
+      id: response.data.chat.id,
+      title: chatTitle,
     };
 
     dispatch(createChat(newChat));
@@ -122,6 +132,11 @@ const Home = () => {
   const handleDeleteChat = (id) => {
     dispatch(deleteChat(id));
   };
+
+  useEffect(() => {
+    dispatch(fetchChats())
+  }, [])
+  
 
   return (
     <div className="chat-container">

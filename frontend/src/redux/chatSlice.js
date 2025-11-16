@@ -1,4 +1,14 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+
+export const fetchChats = createAsyncThunk("chat/fetchChats", async () => {
+  const response = await axios.get("http://localhost:3000/api/chat", {
+    withCredentials: true,
+  });
+
+  // assume API returns: { chats: [...] }
+  return response.data.chats;
+});
 
 const initialState = {
   chats: [],
@@ -15,11 +25,20 @@ const chatSlice = createSlice({
       const newChat = {
         id: action.payload.id,
         title: action.payload.title,
-        date: action.payload.date,
       };
       state.chats.unshift(newChat);
       state.activeChat = newChat.id;
       state.messages[newChat.id] = [];
+    },
+
+    // Get all chats
+    getChat: (state) => {
+      // const response = await axios.get("http://localhost:3000/api/chat",{
+      //   withCredentials:true
+      // });
+      console.log("response");
+
+      // state.chats = response.data.chats
     },
 
     // Set active chat
@@ -76,10 +95,17 @@ const chatSlice = createSlice({
       return state.messages[action.payload] || [];
     },
   },
+
+  extraReducers: (builder) => {
+    builder.addCase(fetchChats.fulfilled, (state, action) => {
+      state.chats = action.payload; // <-- THIS STORES YOUR CHATS
+    });
+  },
 });
 
 export const {
   createChat,
+  getChat,
   setActiveChat,
   addMessage,
   addMessages,

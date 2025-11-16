@@ -10,6 +10,7 @@ const ChatSidebar = ({
   sidebarOpen,
   onCloseSidebar,
 }) => {
+  console.log(chats)
   return (
     <>
       {/* Sidebar */}
@@ -30,26 +31,15 @@ const ChatSidebar = ({
           <div className="chat-list">
             {chats.map((chat) => (
               <div
-                key={chat.id}
-                className={`chat-item ${activeChat === chat.id ? "active" : ""}`}
-                onClick={() => onSelectChat(chat.id)}
+                key={chat._id}
+                className={`chat-item ${activeChat === chat._id ? "active" : ""}`}
+                onClick={() => onSelectChat(chat._id)}
                 role="button"
                 tabIndex={0}
               >
                 <div className="chat-item-content">
                   <p className="chat-title">{chat.title}</p>
-                  <p className="chat-date">{chat.date}</p>
                 </div>
-                <button
-                  className="delete-chat-btn"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onDeleteChat(chat.id);
-                  }}
-                  aria-label={`Delete chat: ${chat.title}`}
-                >
-                  🗑️
-                </button>
               </div>
             ))}
           </div>
