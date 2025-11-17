@@ -36,7 +36,7 @@
   font-size: 0.8rem;
   color: var(--text-secondary);
 }
-
+ 
 /* ============ Form Styles ============ */
 .form-group {
   margin-bottom: 0.9rem;
@@ -104,7 +104,7 @@
   font-weight: 600;
   border: none;
   border-radius: 6px;
-  background-color: var(--accent-color);
+  background-color: #181818;
   color: white;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -113,7 +113,7 @@
 }
 
 .submit-btn:hover:not(:disabled) {
-  background-color: var(--accent-hover);
+  background-color: #2f2f2f;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import "./ChatSidebar.css";
+import { setActiveChat } from "../redux/chatSlice";
 
 const ChatSidebar = ({
   chats,
@@ -10,7 +11,13 @@ const ChatSidebar = ({
   sidebarOpen,
   onCloseSidebar,
 }) => {
-  console.log(chats)
+
+  const onChatSelect = (chatId)=>{
+    onSelectChat(chatId),
+    setActiveChat(chatId)
+  }
+
+  
   return (
     <>
       {/* Sidebar */}
@@ -33,7 +40,7 @@ const ChatSidebar = ({
               <div
                 key={chat._id}
                 className={`chat-item ${activeChat === chat._id ? "active" : ""}`}
-                onClick={() => onSelectChat(chat._id)}
+                onClick={() => onChatSelect(chat._id)}
                 role="button"
                 tabIndex={0}
               >
