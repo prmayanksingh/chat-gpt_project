@@ -34,7 +34,7 @@ const Register = () => {
       setSubmitMessage("Registration successful! Redirecting to login...");
       reset();
 
-      await axios.post("https://chat-gpt-project-adq9.onrender.com/api/auth/register", {
+      await axios.post("http://localhost:3000/api/auth/register", {
         fullname:{
           firstname:data.firstName,
           lastname:data.lastName
