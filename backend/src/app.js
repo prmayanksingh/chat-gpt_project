@@ -8,16 +8,12 @@ const authRoutes = require("./routes/auth.routes");
 const chatRoutes = require("./routes/chat.routes");
 
 const app = express();
-const FRONTEND_URL = process.env.FRONTEND_URL;
-const allowedOrigins = [
-  "http://localhost:5173",
-  "http://127.0.0.1:5173",
-  FRONTEND_URL,
-].filter(Boolean);
+
 
 // Using Middleware
-app.use(cors({})
-);
+app.use(cors({
+  origin:"http://localhost:5173"
+}))
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.static(path.join(__dirname,"../public")))
