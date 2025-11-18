@@ -57,7 +57,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/chat", chatRoutes);
 
 if (process.env.NODE_ENV === "production") {
-  app.get("*", (req, res, next) => {
+  app.get("/*", (req, res, next) => {
     if (req.path.startsWith("/api")) {
       return next();
     }
