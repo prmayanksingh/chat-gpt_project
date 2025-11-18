@@ -1,7 +1,7 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
-const path = require('path')
+const path = require("path");
 
 // Routes
 const authRoutes = require("./routes/auth.routes");
@@ -9,6 +9,9 @@ const chatRoutes = require("./routes/chat.routes");
 
 const app = express();
 const FRONTEND_URL = process.env.FRONTEND_URL;
+const CLIENT_BUILD_PATH =
+  process.env.CLIENT_BUILD_PATH ||
+  path.join(__dirname, "../../frontend/dist");
 const allowedOrigins = [
   "http://localhost:5173",
   "http://127.0.0.1:5173",
@@ -29,15 +32,21 @@ app.use(
 );
 app.use(express.json());
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '../public')))
 
 // Using Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/chat", chatRoutes);
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(CLIENT_BUILD_PATH));
 
-app.get("*name", (req, res)=>{
-  res.sendFile(path.join(__dirname, '../public/index.html'))
-})
+  app.get("*", (req, res, next) => {
+    if (req.path.startsWith("/api")) {
+      return next();
+    }
+
+    res.sendFile(path.join(CLIENT_BUILD_PATH, "index.html"));
+  });
+}
 
 module.exports = app;
