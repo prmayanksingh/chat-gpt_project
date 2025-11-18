@@ -6,10 +6,17 @@ const usermodel = require("../models/user.model");
 const messageModel = require("../models/message.model");
 const { createMemory, queryMemory } = require("../service/vector.service");
 
+const FRONTEND_URL = process.env.FRONTEND_URL;
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://127.0.0.1:5173",
+  FRONTEND_URL,
+].filter(Boolean);
+
 function initSocketServer(httpServer) {
   const io = new Server(httpServer, {
     cors:{
-      origin:"http://localhost:5173",
+      origin: allowedOrigins,
       credentials:true
     }
   });

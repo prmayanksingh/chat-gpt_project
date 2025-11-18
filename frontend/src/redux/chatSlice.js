@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const fetchChats = createAsyncThunk("chat/fetchChats", async () => {
-  const response = await axios.get("http://localhost:3000/api/chat", {
+  const response = await axios.get("https://chat-gpt-project-adq9.onrender.com/api/chat", {
     withCredentials: true,
   });
 
