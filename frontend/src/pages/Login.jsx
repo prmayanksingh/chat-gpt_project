@@ -29,7 +29,7 @@ const Login = () => {
       reset();
 
       await axios
-        .post("http://localhost:3000/api/auth/login", data, {
+        .post("https://chat-gpt-project-adq9.onrender.com/api/auth/login", data, {
           withCredentials: true,
         })
         .then((res) => {

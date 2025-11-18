@@ -7,6 +7,7 @@ import {
   updateMessage,
   fetchChats,
   setMessages,
+  resetChatState,
 } from "../redux/chatSlice";
 
 import ChatSidebar from "../components/ChatSidebar";
@@ -43,7 +44,7 @@ const Home = () => {
   const handleNewChatConfirm = async (chatTitle) => {
     const chat = { title: chatTitle };
 
-    const response = await axios.post("http://localhost:3000/api/chat", chat, {
+    const response = await axios.post("https://chat-gpt-project-adq9.onrender.com/api/chat", chat, {
       withCredentials: true,
     });
 
@@ -64,13 +65,14 @@ const Home = () => {
   const handleLogout = async () => {
     try {
       await axios.post(
-        "http://localhost:3000/api/auth/logout",
+        "https://chat-gpt-project-adq9.onrender.com/api/auth/logout",
         {},
         { withCredentials: true }
       );
     } catch (err) {
       console.error("Logout failed", err);
     } finally {
+      dispatch(resetChatState());
       navigate("/login");
     }
   };
@@ -112,7 +114,7 @@ const Home = () => {
   const getMessages = async (chatId) => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/chat/messages/${chatId}`,
+        `https://chat-gpt-project-adq9.onrender.com/api/chat/messages/${chatId}`,
         { withCredentials: true }
       );
 
@@ -142,13 +144,14 @@ const Home = () => {
       await dispatch(fetchChats()).unwrap();
     } catch (err) {
       console.log("Token missing or invalid. Redirecting to login...");
+      dispatch(resetChatState());
       navigate("/login")
     }
   };
 
   loadChats();
 
-    const tempSocket = io("http://localhost:3000", { withCredentials: true });
+    const tempSocket = io("https://chat-gpt-project-adq9.onrender.com", { withCredentials: true });
 
     tempSocket.on("ai-response", (messagePayload) => {
       const chatId = activeChatRef.current;

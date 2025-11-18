@@ -2,18 +2,20 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const fetchChats = createAsyncThunk("chat/fetchChats", async () => {
-  const response = await axios.get("http://localhost:3000/api/chat", {
+  const response = await axios.get("https://chat-gpt-project-adq9.onrender.com/api/chat", {
     withCredentials: true,
   });
 
   return response.data.chats;
 });
 
-const initialState = {
+const getInitialState = () => ({
   chats: [],
   activeChat: null,
   messages: {}, // [ chatId: [messages] ]
-};
+});
+
+const initialState = getInitialState();
 
 const chatSlice = createSlice({
   name: "chat",
@@ -68,6 +70,7 @@ const chatSlice = createSlice({
         state.activeChat = state.chats.length > 0 ? state.chats[0].id : null;
       }
     },
+    resetChatState: () => getInitialState(),
   },
 
   extraReducers: (builder) => {
@@ -84,6 +87,7 @@ export const {
   setMessages,
   updateMessage, 
   deleteChat,
+  resetChatState,
 } = chatSlice.actions;
 
 export default chatSlice.reducer;
