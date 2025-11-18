@@ -22,7 +22,9 @@ async function createChat(req, res) {
 }
 
 async function getChats(req, res) {
-  const chats = await chatModel.find();
+  const chats = await chatModel
+    .find()
+    .sort({ createdAt: -1 });
 
   res.status(200).json({
     message: "Chat fetched successfully",

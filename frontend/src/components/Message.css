@@ -78,6 +78,34 @@
   font-size: 0.95rem;
 }
 
+.typing-indicator {
+  display: flex;
+  gap: 0.25rem;
+  align-items: flex-end;
+  height: 1rem;
+}
+
+.typing-indicator span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--text-secondary);
+  opacity: 0.4;
+  animation: bounceDot 1s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.app.dark .typing-indicator span {
+  background-color: var(--text-primary);
+}
+
 /* ============ ANIMATIONS ============ */
 
 @keyframes messageIn {
@@ -88,6 +116,18 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes bounceDot {
+  0%,
+  100% {
+    transform: translateY(4px);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-4px);
+    opacity: 0.9;
   }
 }
 

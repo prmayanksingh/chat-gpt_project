@@ -314,38 +314,49 @@
   background-color: var(--bg-primary);
 }
 
-.user-info {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.4rem;
-  border-radius: 6px;
+.logout-btn {
+  width: 100%;
+  padding: 0.65rem 0.8rem;
+  border-radius: 8px;
+  border: 1.5px solid var(--border-color);
+  background-color: transparent;
+  color: var(--text-primary);
+  font-weight: 600;
+  cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.user-info:hover {
+.logout-btn:hover {
   background-color: var(--bg-secondary);
 }
 
-.user-avatar {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background-color: var(--accent-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--bg-primary);
-  font-weight: 700;
-  font-size: 0.75rem;
-  flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+.logout-btn:active {
+  transform: scale(0.98);
 }
 
-.user-name {
-  font-size: 0.8rem;
+.empty-chat-state {
+  text-align: center;
+  padding: 2rem 1rem;
+  border: 1px dashed var(--border-color);
+  border-radius: 10px;
+  color: var(--text-secondary);
+  background-color: var(--bg-secondary);
+}
+
+.app.dark .empty-chat-state {
+  background-color: var(--bg-tertiary);
+}
+
+.empty-title {
+  font-weight: 600;
+  margin-bottom: 0.35rem;
   color: var(--text-primary);
-  font-weight: 500;
+}
+
+.empty-subtitle {
+  margin: 0;
+  font-size: 0.85rem;
+  opacity: 0.8;
 }
 
 /* Sidebar Overlay (for mobile) */

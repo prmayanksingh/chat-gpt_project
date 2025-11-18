@@ -10,7 +10,11 @@ const Message = ({ message }) => {
 
       <div className="message-content">
         {message.loading ? (
-          <p style={{ opacity: 0.6, fontStyle: "italic" }}>...</p>
+          <div className="typing-indicator" aria-label="Assistant is typing">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         ) : (
           <p>{message.text}</p>
         )}

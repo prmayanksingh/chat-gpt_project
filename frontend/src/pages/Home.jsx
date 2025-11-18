@@ -61,6 +61,20 @@ const Home = () => {
     setSidebarOpen(false);
   };
 
+  const handleLogout = async () => {
+    try {
+      await axios.post(
+        "http://localhost:3000/api/auth/logout",
+        {},
+        { withCredentials: true }
+      );
+    } catch (err) {
+      console.error("Logout failed", err);
+    } finally {
+      navigate("/login");
+    }
+  };
+
   // ---------------- SEND MESSAGE ----------------
   const handleSendMessage = async () => {
     if (!inputValue.trim() || !activeChat) return;
@@ -176,6 +190,7 @@ const Home = () => {
         sidebarOpen={sidebarOpen}
         onCloseSidebar={() => setSidebarOpen(false)}
         onNewChat={() => setShowNewChatModal(true)}
+        onLogout={handleLogout}
       />
 
       <main className="chat-main">

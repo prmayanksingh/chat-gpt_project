@@ -1,7 +1,5 @@
 import React from "react";
 import "./ChatSidebar.css";
-import { setActiveChat } from "../redux/chatSlice";
-
 const ChatSidebar = ({
   chats,
   activeChat,
@@ -10,13 +8,16 @@ const ChatSidebar = ({
   onNewChat,
   sidebarOpen,
   onCloseSidebar,
+  onLogout,
 }) => {
 
-  const onChatSelect = (chatId)=>{
-    onSelectChat(chatId),
-    setActiveChat(chatId)
-  }
-
+  const getChatId = (chat) => chat.id ?? chat._id;
+  const onChatSelect = (chat) => {
+    const chatId = getChatId(chat);
+    if (chatId) {
+      onSelectChat(chatId);
+    }
+  };
   
   return (
     <>
@@ -36,27 +37,36 @@ const ChatSidebar = ({
 
         <div className="sidebar-content">
           <div className="chat-list">
-            {chats.map((chat) => (
-              <div
-                key={chat._id}
-                className={`chat-item ${activeChat === chat._id ? "active" : ""}`}
-                onClick={() => onChatSelect(chat._id)}
-                role="button"
-                tabIndex={0}
-              >
-                <div className="chat-item-content">
-                  <p className="chat-title">{chat.title}</p>
-                </div>
+            {chats.length === 0 ? (
+              <div className="empty-chat-state">
+                <p className="empty-title">No chats available</p>
+                <p className="empty-subtitle">Create a new chat to get started.</p>
               </div>
-            ))}
+            ) : (
+              chats.map((chat, index) => {
+                const chatId = getChatId(chat);
+                return (
+                  <div
+                    key={chatId ?? `chat-${index}`}
+                    className={`chat-item ${activeChat === chatId ? "active" : ""}`}
+                    onClick={() => onChatSelect(chat)}
+                    role="button"
+                    tabIndex={0}
+                  >
+                    <div className="chat-item-content">
+                      <p className="chat-title">{chat.title}</p>
+                    </div>
+                  </div>
+                );
+              })
+            )}
           </div>
         </div>
 
         <div className="sidebar-footer">
-          <div className="user-info">
-            <div className="user-avatar">U</div>
-            <span className="user-name">User</span>
-          </div>
+          <button className="logout-btn" onClick={onLogout}>
+            Logout
+          </button>
         </div>
       </aside>
 
