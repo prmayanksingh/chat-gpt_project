@@ -5,7 +5,7 @@ const { Pinecone } = require("@pinecone-database/pinecone");
 const pc = new Pinecone({ apiKey: process.env.PINECONE_API_KEY });
 
 // Create a dense index with integrated embedding
-const ChatGptIndex = pc.Index("chat-gpt-project");
+const ChatGptIndex = pc.Index("chat-gpt");
 
 async function createMemory({ vectors, metadata, messageId }) {
   await ChatGptIndex.upsert([
