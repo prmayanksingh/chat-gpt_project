@@ -15,6 +15,7 @@
   flex-direction: column;
   margin-left: 260px;
   background-color: var(--bg-primary);
+  overflow: hidden;
 }
 
 .app.dark .chat-main {

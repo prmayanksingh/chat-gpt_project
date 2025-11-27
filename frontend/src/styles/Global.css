@@ -7,41 +7,49 @@
 }
 
 :root {
-  /* Light theme colors - Modern black & white */
+  /* Light theme colors - Clean and modern */
   --bg-primary: #ffffff;
-  --bg-secondary: #f8f8f8;
-  --bg-tertiary: #f0f0f0;
-  --text-primary: #0a0a0a;
-  --text-secondary: #565656;
-  --text-tertiary: #8b8b8b;
-  --border-color: #d9d9d9;
-  --accent-color: #000000;
-  --accent-hover: #262626;
+  --bg-secondary: #f5f5f5;
+  --bg-tertiary: #e8e8e8;
+  --sidebar-bg: #f5f5f5;
+  --text-primary: #1a1a1a;
+  --text-secondary: #6b6b6b;
+  --text-tertiary: #9b9b9b;
+  --border-color: #e0e0e0;
+  --accent-color: #1a1a1a;
+  --accent-hover: #2d2d2d;
   --accent-light: #f0f0f0;
-  --button-hover: #e5e5e5;
+  --user-message-bg: #2d2d2d;
+  --assistant-message-bg: #f0f0f0;
+  --user-message-text: #ffffff;
+  --button-hover: #e8e8e8;
   --error-color: #d32f2f;
   --success-color: #1976d2;
-  --shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .app.dark {
-  /* Dark theme colors - Modern black & white */
-  --bg-primary: #0a0a0a;
-  --bg-secondary: #1a1a1a;
-  --bg-tertiary: #2d2d2d;
+  /* Dark theme colors - Clean dark mode */
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #3a3a3a;
+  --sidebar-bg: #1f1f1f;
   --text-primary: #ececec;
   --text-secondary: #b4b4b4;
   --text-tertiary: #8b8b8b;
-  --border-color: #3f3f3f;
+  --border-color: #3a3a3a;
   --accent-color: #ffffff;
-  --accent-hover: #d9d9d9;
+  --accent-hover: #e0e0e0;
   --accent-light: #2d2d2d;
+  --user-message-bg: #3a3a3a;
+  --assistant-message-bg: #2d2d2d;
+  --user-message-text: #ffffff;
   --button-hover: #404040;
   --error-color: #ff6b6b;
   --success-color: #51cf66;
-  --shadow: 0 2px 12px rgba(0, 0, 0, 0.32);
-  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.48);
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 html,

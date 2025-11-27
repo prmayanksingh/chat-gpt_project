@@ -1,8 +1,9 @@
 /* ============ INPUT AREA ============ */
 
 .chat-input-area {
-  padding: 1.5rem 1.5rem 1.75rem 1.5rem;
+  padding: 1.25rem 1.5rem 1.5rem 1.5rem;
   background-color: var(--bg-primary);
+  border-top: 1px solid var(--border-color);
 }
 
 .app.dark .chat-input-area {
@@ -12,22 +13,24 @@
 .input-wrapper {
   display: flex;
   gap: 0.75rem;
-  background-color: var(--bg-secondary);
-  border: 1.5px solid var(--border-color);
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 0.75rem 1rem;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  max-width: 100%;
 }
 
 .input-wrapper:focus-within {
-  border-color: var(--accent-color);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  border-color: var(--text-secondary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   background-color: var(--bg-primary);
 }
 
 .app.dark .input-wrapper:focus-within {
-  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-color: var(--text-secondary);
 }
 
 .chat-input-area input {
@@ -36,9 +39,10 @@
   border: none;
   outline: none;
   color: var(--text-primary);
-  font-size: 0.95rem;
-  padding: 0.5rem;
+  font-size: 0.9375rem;
+  padding: 0.25rem 0.5rem;
   transition: all 0.2s ease;
+  line-height: 1.5;
 }
 
 .chat-input-area input:disabled {
@@ -47,39 +51,54 @@
 }
 
 .chat-input-area input::placeholder {
-  color: var(--text-secondary);
+  color: var(--text-tertiary);
 }
 
 .send-btn {
   background-color: var(--accent-color);
-  color: var(--bg-primary);
+  color: #ffffff;
   border: none;
   border-radius: 8px;
-  padding: 0.6rem 0.9rem;
+  padding: 0.5rem;
+  width: 36px;
+  height: 36px;
   cursor: pointer;
-  font-size: 1.1rem;
+  font-size: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   flex-shrink: 0;
-  font-weight: 600;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  font-weight: 400;
+  box-shadow: none;
+}
+
+.app.dark .send-btn {
+  color: var(--bg-primary);
 }
 
 .send-btn:hover:not(:disabled) {
   background-color: var(--accent-hover);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
-  transform: translateY(-2px);
+  transform: scale(1.05);
 }
 
 .send-btn:active:not(:disabled) {
-  transform: translateY(0);
+  transform: scale(0.95);
 }
 
 .send-btn:disabled {
   opacity: 0.4;
   cursor: not-allowed;
+  background-color: var(--text-tertiary);
+}
+
+.app.dark .send-btn {
+  background-color: var(--accent-color);
+  color: var(--bg-primary);
+}
+
+.app.dark .send-btn:hover:not(:disabled) {
+  background-color: var(--accent-hover);
 }
 
 .input-footer {
